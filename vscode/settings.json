@@ -1,0 +1,95 @@
+{
+  // "eslint.autoFixOnSave": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.fontFamily": "FiraCode Nerd Font",
+  "editor.fontLigatures": true,
+  "explorer.compactFolders": false,
+  "cSpell.language": "en,pt-BR,pt",
+  "editor.lineNumbers": "on",
+
+  "cSpell.userWords": ["uuid"],
+  "[jsonc]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.colorTheme": "GitHub Dark Default",
+  "editor.cursorSurroundingLines": 10,
+
+  // Vim configs
+  "editor.smoothScrolling": true,
+  "vim.hlsearch": true,
+  "vim.leader": "<space>",
+  "vim.easymotion": true,
+
+  "vim.insertModeKeyBindingsNonRecursive": [
+    {
+      "before": ["j", "k"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", ";"],
+      "after": ["A", ";", "<Esc>"]
+    },
+    {
+      "before": ["<leader>", ","],
+      "after": ["A", ",", "<Esc>"]
+    },
+    {
+      "before": ["<leader>", "<space>"],
+      "commands": [":nohl"]
+    },
+    {
+      "before": ["<leader>", "w"],
+      "commands": ["workbench.action.splitEditor"]
+    },
+    {
+      "before": ["<leader>", "e"],
+      "commands": ["workbench.action.toggleSidebarVisibility"]
+    },
+    {
+      "before": ["<leader>", "c"],
+      "commands": ["editor.action.commentLine"]
+    },
+    {
+      "before": ["<leader>", "f"],
+      "commands": ["revealInExplorer"]
+    },
+    {
+      "before": ["<leader>", "r", "e"],
+      "commands": ["editor.action.rename"]
+    },
+    {
+      "before": ["<leader>", "r", "f"],
+      "commands": ["fileutils.renameFile"]
+    },
+    {
+      "before": ["<leader>", "g"],
+      "commands": ["workbench.action.showAllSymbols"]
+    },
+    {
+      "before": ["<leader>", "b"],
+      "commands": ["workbench.action.showEditorsInActiveGroup"]
+    },
+    {
+      "before": ["<leader>", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    }
+  ],
+
+  "vim.visualModeKeyBindings": [
+    {
+      "before": ["<leader>", "c"],
+      "commands": ["editor.action.commentLine", "extension.vim_escape"]
+    },
+    {
+      "before": [">"],
+      "after": [">", "g", "v"]
+    },
+    {
+      "before": ["<"],
+      "after": ["<", "g", "v"]
+    }
+  ]
+}
