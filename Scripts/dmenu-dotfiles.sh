@@ -7,6 +7,7 @@ EDITOR="nvim"
 
 declare -a dotfiles=(
     "i3 - $HOME/.config/i3/config"
+    "alacritty - $HOME/.config/alacritty/alacritty.yml"
     "nvim - $HOME/.config/nvim/init.lua"
     "ranger - $HOME/.config/ranger/rc.conf"
 )
