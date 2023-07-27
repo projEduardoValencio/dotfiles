@@ -9,7 +9,7 @@ declare -a dotfiles=(
     "i3 - $HOME/.config/i3/config"
     "alacritty - $HOME/.config/alacritty/alacritty.yml"
     "nvim - $HOME/.config/nvim/init.lua"
-    "emacs - $HOME/.config/emacs/config.org"
+    "emacs - $HOME/.config/emacs"
     "ranger - $HOME/.config/ranger/rc.conf"
 )
 
