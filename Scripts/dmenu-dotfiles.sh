@@ -3,7 +3,7 @@
 TERMINAL="alacritty"
 
 # Definindo editor
-EDITOR="nvim"
+#EDITOR="nvim"
 
 declare -a dotfiles=(
     "i3 - $HOME/.config/i3/config"
@@ -21,3 +21,5 @@ file_path=$(printf '%s\n' "$opt" | awk '{print $NF}')
 
 # Abrindo arquivo para edição
 alacritty -e $EDITOR $file_path 
+
+teste
