@@ -3,22 +3,6 @@
 #+STARTUP: showeverything
 #+OPTIONS: toc:2
 
-* TABLE OF CONTENTS :toc:
-- [[#programs-load-first][PROGRAMS LOAD FIRST]]
-  - [[#frame-config-layout][Frame Config Layout]]
-  - [[#util-cofig][Util Cofig]]
-  - [[#package-manager][Package Manager]]
-  - [[#evil-mode-config][Evil Mode Config]]
-  - [[#general-keybinding][General Keybinding]]
-  - [[#which-key][Which Key]]
-  - [[#org-mode][ORG MODE]]
-  - [[#tabs][Tabs]]
-  - [[#autocomplete][AutoComplete]]
-  - [[#neo-tree][Neo Tree]]
-  - [[#all-the-icons][All the icons]]
-  - [[#thema][Thema]]
-  - [[#set-java-env][Set JAVA ENV]]
-
 * PROGRAMS LOAD FIRST
 ** Frame Config Layout
 #+begin_src emacs-lisp
