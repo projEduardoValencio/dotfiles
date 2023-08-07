@@ -15,6 +15,8 @@
 
 ;; Autopair mode for "" () {} []
 (electric-pair-mode 1)
+(show-paren-mode)
+show-paren-style
 
 ;; Wrap
 ;;(global-visual-line-mode t)
@@ -45,15 +47,19 @@
 (unless (package-installed-p 'use-package)
     (package-install 'use-package))
 
+;; Try packages
+(use-package try
+  :ensure t)
+
 ;; Auto complete based on emacs builtins and buffer text
-(use-package auto-complete
-    :ensure t
-    :init
-	(ac-config-default)
-	(global-auto-complete-mode t)
-    :config
-	(define-key ac-mode-map (kbd "M-RET") 'auto-complete) ;; Alt Enter for show options
-	(ac-set-trigger-key "TAB"))
+;; (use-package auto-complete
+;;     :ensure t
+;;     :init
+;; 	(ac-config-default)
+;; 	(global-auto-complete-mode t)
+;;     :config
+;; 	(define-key ac-mode-map (kbd "M-RET") 'auto-complete) ;; Alt Enter for show options
+;; 	(ac-set-trigger-key "TAB"))
 
 ;; Evil mode for vim keybing
 (use-package evil
@@ -291,6 +297,11 @@
 	(setcdr (assoc 'counsel-M-x ivy-initial-inputs-alist) "")) ;; Remove ^ when call M-x
 ;; The character ^ is used to show only commands who STARTED with input
 
+;; More functions for ivy show description
+(use-package ivy-rich
+  :ensure t
+  :config (ivy-rich-mode 1))
+
 ;; Fix Backward
 ;;Eclipse-like C-backspace
 (defun my-kill-back ()
@@ -316,13 +327,41 @@
 ;; Terminal emulator
 (use-package vterm
     :ensure t)
+
+;; Complete Anything
+;; Using this we don't need anymore auto-complete package
+(use-package company
+  :ensure t
+  :init (global-company-mode))
+
+;; treemacs file explorer
+(use-package treemacs
+  :ensure t)
+
+;; Git
+(use-package magit
+  :ensure t)
+
+;; LSP config
+(use-package lsp-mode
+  :ensure t
+  :after (java-mode)
+  :hook
+  (java-mode . lsp))
+
+(use-package lsp-java
+  :ensure t
+  :init
+    (setq lsp-java-java-path "/opt/jdk/jdk-20.0.2/bin/java"))
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(vterm cmake-mode yasnippet-snippets which-key use-package-chords undo-tree rainbow-delimiters quickrun projectile org-habit-stats org-drill org-bullets neotree lsp-ui lsp-java helm-swoop helm-lsp helm-descbinds general flycheck exec-path-from-shell evil-org evil-collection doom-themes counsel company centaur-tabs auto-complete all-the-icons)))
+   '(eglot magit treemacs-tab-bar cmake-mode yasnippet-snippets which-key vterm use-package-chords undo-tree try rainbow-delimiters quickrun projectile org-super-agenda org-habit-stats org-drill org-bullets neotree lsp-ui lsp-java ivy-rich helm-swoop helm-lsp helm-descbinds general flycheck exec-path-from-shell evil-org evil-collection doom-themes counsel company centaur-tabs auto-complete all-the-icons)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
