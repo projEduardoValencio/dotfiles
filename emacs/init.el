@@ -1,9 +1,9 @@
 ;; Disable Startup
 (setq inhibit-startup-message t)
 
-;; Load themes
 ;(load-theme 'deeper-blue t)
 ;(load-theme 'manoj-dark t)
+;(load-theme 'doom-ir-black y)
 (global-display-line-numbers-mode 1)
 
 ;; Remove Headers
@@ -64,19 +64,20 @@
     :config
 	(evil-mode 1))
 
-;; Use vim keybinds for org files org-ageda
-(use-package evil-org
-  :ensure t)
-(use-package evil-org-agenda
-  :ensure t)
-
 ;; Evil collection, more keybind configs for others plugins like neotree
 (use-package evil-collection
   :after evil
   :ensure t
   :config
-    (evil-collection-init)
     (evil-collection-init))
+
+;; Use vim keybinds for org files org-ageda
+(add-to-list 'load-path "~/.config/emacs/plugins/evil-org-mode")
+(require 'evil-org)
+(add-hook 'org-mode-hook 'evil-org-mode)
+(evil-org-set-key-theme '(navigation insert textobjects additional calendar))
+(require 'evil-org-agenda)
+(evil-org-agenda-set-keys)
 
 ;; Undo tree with evil system
 (use-package undo-tree
@@ -87,10 +88,6 @@
     (evil-set-undo-system 'undo-tree)
     (global-undo-tree-mode 1))
 ;; undo-tree-visualize
-
-;; Use vim keybings on Org files like org-agenda
-(use-package evil-org-mode
-  :ensure t)
 
 ;; Easy way to set new keybings
 (use-package general
@@ -107,7 +104,8 @@
 	    "." '(find-file :wk "Find File")
 	    "fc" '((lambda () (interactive) (find-file "~/.config/emacs/init.el")) :wk "Config File")
 	    "TAB TAB" '(comment-line :wk "Comment Lines")
-	    "a" '(org-agenda :wk "Org Agenda"))
+	    "a" '(org-agenda :wk "Org Agenda")
+	    "t" '(vterm :wk "Terminal vterm"))
 	;; Keys for interections with buffer
 	(dt/leader-keys
 	    "b" '(:ignore t :wk "Buffer")
@@ -123,6 +121,10 @@
 	    "es" '(eval-last-sexp :wk "Evaluete elisp expression before point")
 	    "ee" '(eval-expression :wk "Evaluete and elisp expression")
 	    "er" '(eval-region :wk "Evaluete elisp in region"))
+	;; Move between tabs
+	(dt/leader-keys
+	    "l" '(centaur-tabs-forward :wk "Move forward tab")
+	    "h" '(centaur-tabs-backward :wk "Move backward tab"))
 )
 
 ;; PopUp show commands for current key set
@@ -142,6 +144,7 @@
     :config
 	(centaur-tabs-mode t)
 	(setq centaur-tabs-set-icons t)
+	;;(setq centaur-tabs--buffer-show-groups t)
     :bind
 	("C-<prior>" . centaur-tabs-backward)
 	("C-<next>" . centaur-tabs-forward))
@@ -151,9 +154,21 @@
   :config
     (setq org-ellipsis " ⤵")
     ;; Org Agenda
-    (setq org-agenda-files '("~/Org"))
+    (setq org-agenda-files '("~/Org" "~/Desktop/SRS"))
     (setq org-agenda-start-with-log-mode t)
     (setq org-log-done 'time)
+    (setq org-priority-faces '((65 :foreground "#ff5555")
+			    (66 :foreground "#f1fa8c")
+			    (67 :foreground "#50fa7b")))
+    ;; in this case I'm logging TODO and DONE states
+    (setq org-todo-keywords
+	'((sequence "TODO(t!)" "NEXT(n)" "WAIT(w)" "|" "DONE(d!)" "CANC(c!)")))
+    ;; I prefer to log TODO creation also
+    (setq org-treat-insert-todo-heading-as-state-change nil)
+    ;; Change name of tasks on org-agenda
+    ;;(setq org-agenda-prefix-format '(
+	;;(agenda  . " • %-10T%?-12t% s"))) ;; file name + org-agenda-entry-type
+	;;(agenda  . "  • %T %?-12t % s")))
     (setq org-log-into-drawer t)
 
     (setq org-agenda-custom-commands
@@ -173,9 +188,10 @@
 ;; Org Agenda Habit
 (use-package org-habit-stats
     :ensure t
+    :init (setq org-habit-graph-column 60)
     :config
     (org-habit-toggle-habits)
-    (setq org-habit-graph-column 80)
+    (setq org-habit-show-habits-only-for-today t)
     )
 
 
@@ -198,7 +214,7 @@
 
 (use-package rainbow-delimiters
     :ensure t
-    :config (rainbow-delimiters-mode))
+    :init (rainbow-delimiters-mode))
 
 ;; Neotree
 (use-package neotree
@@ -296,13 +312,17 @@
 				  (split-window-right)
 				  (find-file "~/.config/emacs/init.el")
 				  (evil-window-rotate-upwards))))
+
+;; Terminal emulator
+(use-package vterm
+    :ensure t)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(evil-org-agenda evil-org evil-org-mode org-habit-stats cmake-mode yasnippet-snippets which-key use-package-chords undo-tree rainbow-delimiters quickrun projectile org-drill org-bullets neotree lsp-ui lsp-java helm-swoop helm-lsp helm-descbinds general flycheck exec-path-from-shell evil-collection doom-themes counsel company centaur-tabs auto-complete all-the-icons)))
+   '(vterm cmake-mode yasnippet-snippets which-key use-package-chords undo-tree rainbow-delimiters quickrun projectile org-habit-stats org-drill org-bullets neotree lsp-ui lsp-java helm-swoop helm-lsp helm-descbinds general flycheck exec-path-from-shell evil-org evil-collection doom-themes counsel company centaur-tabs auto-complete all-the-icons)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
