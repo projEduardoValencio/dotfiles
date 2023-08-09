@@ -43,6 +43,7 @@ show-paren-style
              '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
+
 ;; Granted use package
 (unless (package-installed-p 'use-package)
     (package-install 'use-package))
@@ -91,6 +92,7 @@ show-paren-style
   :after evil
   :diminish
   :config
+  (setq undo-tree-history-directory-alist '(("." . "~/.config/emacs/undo")))
     (evil-set-undo-system 'undo-tree)
     (global-undo-tree-mode 1))
 ;; undo-tree-visualize
@@ -111,7 +113,8 @@ show-paren-style
 	    "fc" '((lambda () (interactive) (find-file "~/.config/emacs/init.el")) :wk "Config File")
 	    "TAB TAB" '(comment-line :wk "Comment Lines")
 	    "a" '(org-agenda :wk "Org Agenda")
-	    "t" '(vterm :wk "Terminal vterm"))
+	    "t" '(vterm :wk "Terminal vterm")
+	    "n" '(treemacs :wk "Treemacs"))
 	;; Keys for interections with buffer
 	(dt/leader-keys
 	    "b" '(:ignore t :wk "Buffer")
@@ -131,6 +134,11 @@ show-paren-style
 	(dt/leader-keys
 	    "l" '(centaur-tabs-forward :wk "Move forward tab")
 	    "h" '(centaur-tabs-backward :wk "Move backward tab"))
+	(dt/leader-keys
+	    "s" '(:ignore t :wk "Slime")
+	    "sa" '(sly :wk "Open Slime")
+	    "se" '(sly-eval-last-expression :wk "Slime eval last expression")
+	    "sd" '(sly-eval-defun :wk "Slime eval defun"))
 )
 
 ;; PopUp show commands for current key set
@@ -331,8 +339,12 @@ show-paren-style
 ;; Complete Anything
 ;; Using this we don't need anymore auto-complete package
 (use-package company
-  :ensure t
-  :init (global-company-mode))
+    :ensure t
+    :init (global-company-mode)
+    :config
+	(setq company-minimum-prefix-length 2)
+    :bind
+	("C-<return>" . company-complete))
 
 ;; treemacs file explorer
 (use-package treemacs
@@ -354,17 +366,15 @@ show-paren-style
   :init
     (setq lsp-java-java-path "/opt/jdk/jdk-20.0.2/bin/java"))
 
+;; LISP
+(use-package sly
+  :ensure t
+  :init
+    (setq inferior-lisp-program "sbcl"))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(eglot magit treemacs-tab-bar cmake-mode yasnippet-snippets which-key vterm use-package-chords undo-tree try rainbow-delimiters quickrun projectile org-super-agenda org-habit-stats org-drill org-bullets neotree lsp-ui lsp-java ivy-rich helm-swoop helm-lsp helm-descbinds general flycheck exec-path-from-shell evil-org evil-collection doom-themes counsel company centaur-tabs auto-complete all-the-icons)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;; Set default browser eww
+;;(setq browse-url-browser-function 'eww-browse-url)
+(setq browse-url-browser-function 'w3m-browse-url)
+
