@@ -358,6 +358,11 @@ show-paren-style
 (use-package magit
   :ensure t)
 
+;; hl line for uncommited changes
+(use-package diff-hl
+  :ensure t
+  :init (global-diff-hl-mode))
+
 ;; LSP config
 (use-package lsp-mode
   :ensure t
@@ -405,7 +410,7 @@ show-paren-style
  '(jdee-db-spec-breakpoint-face-colors (cons "#1B2229" "#3f444a"))
  '(objed-cursor-color "#ff6c60")
  '(package-selected-packages
-   '(cmake-mode yasnippet-snippets which-key w3m vterm use-package-chords undo-tree try treemacs-tab-bar sly rainbow-delimiters quickrun projectile org-super-agenda org-habit-stats org-drill org-bullets neotree magit lsp-ui lsp-java ivy-rich helm-swoop helm-lsp helm-descbinds general flycheck exec-path-from-shell evil-org evil-collection eglot doom-themes counsel company centaur-tabs auto-complete all-the-icons))
+   '(hl-diff diff-hl cmake-mode yasnippet-snippets which-key w3m vterm use-package-chords undo-tree try treemacs-tab-bar sly rainbow-delimiters quickrun projectile org-super-agenda org-habit-stats org-drill org-bullets neotree magit lsp-ui lsp-java ivy-rich helm-swoop helm-lsp helm-descbinds general flycheck exec-path-from-shell evil-org evil-collection eglot doom-themes counsel company centaur-tabs auto-complete all-the-icons))
  '(pdf-view-midnight-colors (cons "#f6f3e8" "#000000"))
  '(rustic-ansi-faces
    ["#000000" "#ff6c60" "#A8FF60" "#FFFFB6" "#96CBFE" "#FF73FD" "#C6C5FE" "#f6f3e8"])
@@ -436,4 +441,5 @@ show-paren-style
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(company-tooltip ((t (:background "#111" :foreground "#fff"))))
+ '(company-tooltip-selection ((t (:background "#444")))))
