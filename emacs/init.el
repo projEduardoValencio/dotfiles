@@ -139,6 +139,13 @@ show-paren-style
 	    "sa" '(sly :wk "Open Slime")
 	    "se" '(sly-eval-last-expression :wk "Slime eval last expression")
 	    "sd" '(sly-eval-defun :wk "Slime eval defun"))
+	(dt/leader-keys
+	  "g" '(:ignore t :wk "Magit")
+	  "gl" '(magit-log-all :wk "Log all")
+	  "gc" '(magit-commit :wk "Commit")
+	  "gs" '(magit-stage :wk "Stage")
+	  "gg" '(magit-log :wk "Log more options")
+	  "gp" '(magit-push :wk "Push commits"))
 )
 
 ;; PopUp show commands for current key set
