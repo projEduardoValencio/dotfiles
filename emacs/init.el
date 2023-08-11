@@ -78,6 +78,14 @@ show-paren-style
   :config
     (evil-collection-init))
 
+;; keybind special for evil
+(use-package key-chord
+  :ensure t
+  :config
+    (setq key-chord-two-keys-delay 0.5)
+    (key-chord-define evil-insert-state-map "jk" 'evil-normal-state)
+    (key-chord-mode 1))
+
 ;; Use vim keybinds for org files org-ageda
 (add-to-list 'load-path "~/.config/emacs/plugins/evil-org-mode")
 (require 'evil-org)
@@ -235,7 +243,7 @@ show-paren-style
 
 (use-package rainbow-delimiters
     :ensure t
-    :init (rainbow-delimiters-mode))
+    :config (rainbow-delimiters-mode))
 
 ;; Neotree
 (use-package neotree
