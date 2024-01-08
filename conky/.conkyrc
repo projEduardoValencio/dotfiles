@@ -1,0 +1,4 @@
+conky.config = {
+	aligment = 'top_right',
+	background = true,
+}

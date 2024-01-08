@@ -32,7 +32,7 @@ font:
   # Normal (roman) font face
   normal:
     # Font family
-    family: monospace
+    family: JetBrainsMono Nerd Font
     style: Regular
 
   # Bold font face
@@ -152,7 +152,7 @@ live_config_reload: true
 
 # Shell
 shell:
-  program: /bin/bash
+  program: /bin/zsh
 #  args:
 #    - --login
 

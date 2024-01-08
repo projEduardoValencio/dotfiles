@@ -117,12 +117,12 @@ show-paren-style
 	    :global-prefix "M-SPC")
 	;; Keys for interactions and specials
 	(dt/leader-keys
-	    "." '(find-file :wk "Find File")
+	    "ff" '(find-file :wk "Find File")
 	    "fc" '((lambda () (interactive) (find-file "~/.config/emacs/init.el")) :wk "Config File")
 	    "TAB TAB" '(comment-line :wk "Comment Lines")
 	    "a" '(org-agenda :wk "Org Agenda")
-	    "t" '(vterm :wk "Terminal vterm")
-	    "n" '(treemacs :wk "Treemacs"))
+	    "t" '((lambda () (interactive) (progn (split-window-below) (vterm) (evil-window-rotate-upwards))) :wk "Terminal vterm")
+	    "n" '(neotree-toggle :wk "Neotree"))
 	;; Keys for interections with buffer
 	(dt/leader-keys
 	    "b" '(:ignore t :wk "Buffer")
@@ -140,8 +140,8 @@ show-paren-style
 	    "er" '(eval-region :wk "Evaluete elisp in region"))
 	;; Move between tabs
 	(dt/leader-keys
-	    "l" '(centaur-tabs-forward :wk "Move forward tab")
-	    "h" '(centaur-tabs-backward :wk "Move backward tab"))
+	    "." '(centaur-tabs-forward :wk "Move forward tab")
+	    "," '(centaur-tabs-backward :wk "Move backward tab"))
 	(dt/leader-keys
 	    "s" '(:ignore t :wk "Slime")
 	    "sa" '(sly :wk "Open Slime")
@@ -154,6 +154,15 @@ show-paren-style
 	  "gs" '(magit-stage :wk "Stage")
 	  "gg" '(magit-log :wk "Log more options")
 	  "gp" '(magit-push :wk "Push commits"))
+	(dt/leader-keys
+	  "d" '(:ignore t :wk "Dap")
+	  "db" '(dap-debug :wk "Dap Start Debug")
+	  "de" '(dap-debug-edit-template :wk "Dap Edit Debug")
+	  "dd" '(dap-breakpoint-toggle :wk "Dap Breakpoint Toggle")
+	  "dn" '(dap-step-in :wk "Dap Step In")
+	  "dp" '(dap-step-out :wk "Dap Step Out")
+	  "dc" '(dap-continue :wk "Dap Continue (Next breackpoint if exist)")
+	  "ds" '(dap-stop-thread :wk "Dap Stop"))
 )
 
 ;; PopUp show commands for current key set
@@ -341,11 +350,11 @@ show-paren-style
 ;; (setq initial-buffer-choice 'org-agenda)
 (add-hook 'emacs-startup-hook (lambda ()
 				(progn
-				  (org-agenda nil "d")
-				  (delete-other-windows)
-				  (split-window-right)
-				  (find-file "~/.config/emacs/init.el")
-				  (evil-window-rotate-upwards))))
+;;				  (org-agenda nil "d")
+				  ;;(delete-other-windows)
+				  ;;(split-window-right)
+				  (find-file "~/.config/emacs/init.el"))))
+				  ;;(evil-window-rotate-upwards))))
 
 ;; Terminal emulator
 (use-package vterm
@@ -378,18 +387,6 @@ show-paren-style
   :ensure t
   :init (global-diff-hl-mode))
 
-;; LSP config
-(use-package lsp-mode
-  :ensure t
-  :after (java-mode)
-  :hook
-  (java-mode . lsp))
-
-(use-package lsp-java
-  :ensure t
-  :init
-    (setq lsp-java-java-path "/opt/jdk/jdk-20.0.2/bin/java"))
-
 ;; LISP
 (use-package sly
   :ensure t
@@ -401,6 +398,35 @@ show-paren-style
 ;; Set default browser eww
 ;;(setq browse-url-browser-function 'eww-browse-url)
 (setq browse-url-browser-function 'w3m-browse-url)
+
+;; LSP config
+(use-package lsp-mode
+  :init
+  ;; set prefix for lsp-command-keymap (few alternatives - "C-l", "C-c l")
+  (setq lsp-keymap-prefix "C-c l")
+    (require 'dap-cpptools)
+  :hook (;; replace XXX-mode with concrete major-mode(e. g. python-mode)
+         ;;(c++-mode . lsp)
+         ;; if you want which-key integration
+         (lsp-mode . lsp-enable-which-key-integration))
+  :commands lsp)
+
+;; optionally
+(use-package lsp-ui :commands lsp-ui-mode)
+;; if you are helm user
+(use-package helm-lsp :commands helm-lsp-workspace-symbol)
+;; if you are ivy user
+(use-package lsp-ivy :commands lsp-ivy-workspace-symbol)
+(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+
+;; optionally if you want to use debugger
+(use-package dap-mode)
+(use-package dap-cpptools)
+(use-package dap-lldb) 
+
+
+
+;; ================================================================================================================== ;;
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -424,8 +450,9 @@ show-paren-style
  '(jdee-db-requested-breakpoint-face-colors (cons "#1B2229" "#A8FF60"))
  '(jdee-db-spec-breakpoint-face-colors (cons "#1B2229" "#3f444a"))
  '(objed-cursor-color "#ff6c60")
+ '(org-agenda-files nil)
  '(package-selected-packages
-   '(hl-diff diff-hl cmake-mode yasnippet-snippets which-key w3m vterm use-package-chords undo-tree try treemacs-tab-bar sly rainbow-delimiters quickrun projectile org-super-agenda org-habit-stats org-drill org-bullets neotree magit lsp-ui lsp-java ivy-rich helm-swoop helm-lsp helm-descbinds general flycheck exec-path-from-shell evil-org evil-collection eglot doom-themes counsel company centaur-tabs auto-complete all-the-icons))
+   '(dap-cpptools dap-lldb dap-c++ hl-diff diff-hl cmake-mode yasnippet-snippets which-key w3m vterm use-package-chords undo-tree try treemacs-tab-bar sly rainbow-delimiters quickrun projectile org-super-agenda org-habit-stats org-drill org-bullets neotree magit lsp-ui lsp-java ivy-rich helm-swoop helm-lsp helm-descbinds general flycheck exec-path-from-shell evil-org evil-collection eglot doom-themes counsel company centaur-tabs auto-complete all-the-icons))
  '(pdf-view-midnight-colors (cons "#f6f3e8" "#000000"))
  '(rustic-ansi-faces
    ["#000000" "#ff6c60" "#A8FF60" "#FFFFB6" "#96CBFE" "#FF73FD" "#C6C5FE" "#f6f3e8"])
