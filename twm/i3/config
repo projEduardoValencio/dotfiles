@@ -217,5 +217,8 @@ bindsym $mod+i exec $terminal -e ranger
 ############# START ###############
 ###################################
 
-exec --no-startup-id ~/.fehbg
+# exec --no-startup-id ~/.fehbg
+# RANDOMIZE WALLPAPER
+exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
+
 exec --no-startup-id "picom --config ~/.config/picom/picom.conf"
