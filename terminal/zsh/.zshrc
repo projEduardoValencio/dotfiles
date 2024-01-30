@@ -105,3 +105,12 @@ source $ZSH/oh-my-zsh.sh
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export JAVA_HOME=/usr/local/java/jdk1.8.0_202/bin
+export JRE_HOME=/usr/local/java/jdk1.8.0_202/jre/bin
+export CLASSPATH=/usr/local/java/jdk1.8.0_202/lib
+export PATH=$PATH:$HOME/bin:$JAVA_HOME:$JRE_HOME:$CLASSPATH
+
+export _PENTAHO_JAVA=$JRE_HOME
+
+export WINEARCH=win32
