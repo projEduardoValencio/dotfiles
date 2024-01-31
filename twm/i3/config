@@ -188,11 +188,14 @@ bar {
 ############# SCROT ################
 ###################################
 # Selecionar area
-bindsym --release $mod+Shift+s exec "scrot -s ~/Pictures/screenshots/$(date +%F_%T).png"
+# bindsym --release $mod+Shift+s exec "scrot -s ~/Pictures/screenshots/$(date +%F_%T).png"
 # TUDO
-bindsym --release $mod+Shift+a exec "scrot ~/Pictures/screenshots/$(date +%F_%T).png"
+# bindsym --release $mod+Shift+a exec "scrot ~/Pictures/screenshots/$(date +%F_%T).png"
 # Janela ativo
-bindsym --release $mod+Shift+w exec "scrot -u ~/Pictures/screenshots/$(date +%F_%T).png"
+# bindsym --release $mod+Shift+w exec "scrot -u ~/Pictures/screenshots/$(date +%F_%T).png"
+
+bindsym --release $mod+Shift+s exec "shutter -s"
+bindsym --release $mod+Shift+a exec "shutter -a"
 
 
 
