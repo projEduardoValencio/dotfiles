@@ -1,7 +1,20 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = '$all'
+format = """
+$directory\
+$git_branch\
+$git_status\
+$c\
+$cmake\
+$cobol\
+$golang\
+$java\
+$nodejs\
+$python\
+$rust\
+$status\
+$character"""
 
 # Inserts a blank line between shell prompts
 add_newline = true
@@ -11,6 +24,20 @@ add_newline = true
 success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
 vimcmd_symbol = '[V](bold green) '
 
+[directory]
+truncation_length = 3
+read_only=' 🔒'
+style='bold #149dff'
+
+[git_branch]
+symbol=''
+
+[line_break]
+disabled = true
+
 # Disable the package module, hiding it from the prompt completely
 [package]
 disabled = true
+
+[python]
+symbol='󱔎 '
