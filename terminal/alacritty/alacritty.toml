@@ -415,7 +415,7 @@ mouse = "Middle"
 save_to_clipboard = false
 
 [shell]
-program = "/bin/zsh"
+program = "/bin/fish"
 
 [window]
 opacity = 0.95
