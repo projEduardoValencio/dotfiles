@@ -206,8 +206,9 @@ bindsym --release $mod+Shift+a exec "flameshot full"
 ###################################
 ############# GAPS ################
 ###################################
-for_window [class="^.*"] border pixel 1
-client.focused #ffffff #ffffff #444444 #888888
+for_window [class="^.*"] border pixel 2
+#client.focused #ffffff #ffffff #444444 #888888
+client.focused #2989ff #2989ff #444444 #888888
 
 gaps inner 10
 gaps outer 1
