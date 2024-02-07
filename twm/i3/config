@@ -229,4 +229,6 @@ bindsym $mod+i exec $terminal -e ranger
 # RANDOMIZE WALLPAPER
 exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
 
-exec --no-startup-id "picom --config ~/.config/picom/picom.conf"
+exec --no-startup-id "~/dotfiles/Scripts/startup.sh"
+exec --no-startup-id "picom"
+exec --no-startup-id "~/dotfiles/Scripts/live-wallpaper.sh"
