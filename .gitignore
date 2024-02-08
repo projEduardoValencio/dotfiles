@@ -1,3 +1,5 @@
 /emacs/*
 !/emacs/init.el
 !/emacs/early-init.el
+/terminal/fish/*
+!/terminal/fish/config.fish
