@@ -11,6 +11,9 @@ local keymap = vim.keymap -- for conciseness
 -- use jk to exit insert mode
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
+-- close all buffers and tabs
+keymap.set("n", "<leader><A-q>", "<cmd>qa<CR>", { desc = "Close all buffers and tabs" })
+
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
