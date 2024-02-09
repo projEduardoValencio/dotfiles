@@ -14,6 +14,5 @@ set -x _PENTAHO_JAVA $JRE_HOME
 
 
 set -Ux STARSHIP_CONFIG /home/eduardo/.config/starship/starship.toml
-starship init fish | source
 
 neofetch
