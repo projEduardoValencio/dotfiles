@@ -11,6 +11,7 @@ return {
         "javascript",
         "html",
         "css",
+        "lua",
       },
       highlight = { enable = true },
       indent = { enable = true }
