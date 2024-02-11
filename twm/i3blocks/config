@@ -1,0 +1,93 @@
+# i3blocks config file
+
+separator_block_width=15
+markup=none
+
+[miccontrol]
+command=~/.config/i3blocks/miccontrol/miccontrol
+SOURCE=alsa_input.pci-0000_00_1b.0.analog-stereo
+label=MIC 
+interval=10
+signal=10
+
+[volume]
+command=~/.config/i3blocks/volume/volume
+#label=♪
+label=VOL 
+interval=once
+signal=10
+STEP=5%
+
+# Memory usage
+[memory]
+command= ~/.config/i3blocks/memory/memory
+label=MEM 
+separator=true
+interval=30
+
+# CPU usage
+[cpu_usage]
+command= ~/.config/i3blocks/cpu_usage/cpu_usage
+label=CPU 
+interval=10
+align=center
+min_width=CPU 100.00%
+separator=true
+
+# Battery indicator
+[battery]
+command= ~/.config/i3blocks/battery/battery
+label=BAT 
+#label=⚡
+interval=30
+
+# Date Time
+#
+[time]
+#command=date '+%Y-%m-%d %H:%M:%S'
+command=date '+%d-%m-%Y %H:%M '
+interval=5
+
+# Generic media player support
+#
+# This displays "ARTIST - SONG" if a music is playing.
+# Supported players are: spotify, vlc, audacious, xmms2, mplayer, and others.
+# Set to %any to automatically pick (Requires playerctl >=2.1.1)
+#[mediaplayer]
+# This picks any player, with vlc as first, and spotify as last choice
+#instance=vlc,%any,spotify
+#interval=5
+#signal=10
+
+# OpenVPN support
+#
+# Support multiple VPN, with colors.
+#[openvpn]
+#interval=20
+
+# Temperature
+#
+# Support multiple chips, though lm-sensors.
+# The script may be called with -w and -c switches to specify thresholds,
+# see the script for details.
+#[temperature]
+#label=TEMP
+#interval=10
+
+# Key indicators
+#
+# Add the following bindings to i3 config file:
+#
+# bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
+# bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
+#[keyindicator]
+#KEY=CAPS
+#markup=pango
+#interval=once
+#signal=11
+
+#[keyindicator]
+#KEY=NUM
+#markup=pango
+#interval=once
+#signal=11
