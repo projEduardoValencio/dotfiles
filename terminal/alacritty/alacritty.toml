@@ -23,19 +23,19 @@ shape = "Block"
 size = 11.0
 
 [font.bold]
-family = "monospace"
+family = "Hack Nerd Font"
 style = "Bold"
 
 [font.bold_italic]
-family = "monospace"
+family = "Hack Nerd Font"
 style = "Bold Italic"
 
 [font.italic]
-family = "monospace"
+family = "Hack Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "JetBrainsMono Nerd Font"
+family = "Hack Nerd Font"
 style = "Regular"
 
 [[keyboard.bindings]]
