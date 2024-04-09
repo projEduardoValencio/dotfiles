@@ -3,20 +3,20 @@
 separator_block_width=15
 markup=none
 
-[miccontrol]
-command=~/.config/i3blocks/miccontrol/miccontrol
-SOURCE=alsa_input.pci-0000_00_1b.0.analog-stereo
-label=MIC 
-interval=10
-signal=10
+# [miccontrol]
+# command=~/.config/i3blocks/miccontrol/miccontrol
+# SOURCE=alsa_input.pci-0000_00_1b.0.analog-stereo
+# label=MIC 
+# interval=10
+# signal=10
 
-[volume]
-command=~/.config/i3blocks/volume/volume
-#label=♪
-label=VOL 
-interval=once
-signal=10
-STEP=5%
+# [volume]
+# command=~/.config/i3blocks/volume/volume
+# #label=♪
+# label=VOL 
+# interval=once
+# signal=10
+# STEP=5%
 
 # Memory usage
 [memory]

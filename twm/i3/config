@@ -231,4 +231,4 @@ exec feh --randomize --bg-fill ~/Pictures/wallpapers/*
 
 exec --no-startup-id "~/dotfiles/Scripts/startup.sh"
 exec --no-startup-id "picom"
-exec --no-startup-id "~/dotfiles/Scripts/live-wallpaper.sh"
+#exec --no-startup-id "~/dotfiles/Scripts/live-wallpaper.sh"
