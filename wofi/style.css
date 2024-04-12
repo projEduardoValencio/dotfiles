@@ -1,0 +1,12 @@
+window {
+   border-radius: 5px; 
+   background-color: #0d1117;
+   border: 1px solid #90a4ae;
+   color: aliceblue;
+   height: 15px;
+}
+
+#input {
+   background-color: #0d1117;
+   color: aliceblue;
+}

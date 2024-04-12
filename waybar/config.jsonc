@@ -25,42 +25,42 @@
       "on-click": "activate"
     },
     "clock": {
-      "format": "<span color='#b4befe'> </span>{:%H:%M}",
+      "format": "<span color='#edf4fc'> {:%H:%M    %d/%m/%Y}</span>",
     },
     "backlight": {
       "device": "intel_backlight",
-      "format": "<span color='#b4befe'>{icon}</span> {percent}%",
+      "format": "<span color='#edf4fc'>{icon}</span> {percent}%",
       "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "pulseaudio": {
-      "format": "<span color='#b4befe'>{icon}</span> {volume}%",
+      "format": "<span color='#edf4fc'>{icon}</span> {volume}%",
       "format-muted": "",
       "tooltip": false,
       "format-icons": {
         "headphone": "",
         "default": ["", "", "󰕾", "󰕾", "󰕾", "", "", ""]
       },
-      "scroll-step": 1,
+      "scroll-step": 5,
     },
     "bluetooth": {
-      "format": "<span color='#b4befe'></span> {status}",
+      "format": "<span color='#edf4fc'></span> {status}",
       "format-disabled": "", // an empty format will hide the module
-      "format-connected": "<span color='#b4befe'></span> {num_connections}",
+      "format-connected": "<span color='#edf4fc'></span> {num_connections}",
       "tooltip-format": "{device_enumerate}",
       "tooltip-format-enumerate-connected": "{device_alias}   {device_address}"
     },
     "network": {
       "interface": "wlan0",
       "format": "{ifname}",
-      "format-wifi": "<span color='#b4befe'>  </span>{essid}",
+      "format-wifi": "<span color='#edf4fc'>  </span>{essid}",
       "format-ethernet": "{ipaddr}/{cidr} ",
-      "format-disconnected": "<span color='#b4befe'>󰖪 </span>No Network",
+      "format-disconnected": "<span color='#edf4fc'>󰖪 </span>No Network",
       "tooltip": false,
     },
     "battery": {
-      "format": "<span color='#b4befe'>{icon}</span> {capacity}%",
+      "format": "<span color='#edf4fc'>{icon}</span> {capacity}%",
       "format-icons": ["", "", "", "", ""],
-      "format-charging": "<span color='#b4befe'></span> {capacity}%",
+      "format-charging": "<span color='#edf4fc'></span> {capacity}%",
       "tooltip": false,
     },
 }
