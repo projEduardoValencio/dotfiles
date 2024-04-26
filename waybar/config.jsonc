@@ -30,7 +30,8 @@
     "backlight": {
       "device": "intel_backlight",
       "format": "<span color='#edf4fc'>{icon}</span> {percent}%",
-      "format-icons": ["", "", "", "", "", "", "", "", ""]
+      "format-icons": ["", "", "", "", "", "", "", "", ""],
+      "scroll-step": 5,
     },
     "pulseaudio": {
       "format": "<span color='#edf4fc'>{icon}</span> {volume}%",
