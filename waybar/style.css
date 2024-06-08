@@ -10,7 +10,7 @@ window#waybar {
   background: transparent;
 }
 
-#custom-arch, #workspaces {
+#workspaces {
   border-radius: 10px;
   background-color: #11111b;
   color: #edf4fc;
@@ -22,8 +22,17 @@ window#waybar {
 }
 
 #custom-arch {
+  border-radius: 10px;
+  background-color: #11111b;
+  color: #edf4fc;
+  margin-top: 10px;
+  margin-right: 10px;
+  padding-top: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
   font-size: 20px;
   margin-left: 10px;
+  padding-right: 17px;
   color: #edf4fc;
 }
 

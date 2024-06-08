@@ -4,7 +4,7 @@
     "modules-center": ["clock"],
     "modules-right": ["backlight", "pulseaudio", "bluetooth", "network", "battery"],
     "custom/arch": {
-      "format": "  ",
+      "format": "",
       "tooltip": false,
       "on-click": "sh $HOME/.config/rofi/bin/powermenu"
     },
@@ -25,7 +25,7 @@
       "on-click": "activate"
     },
     "clock": {
-      "format": "<span color='#edf4fc'> {:%H:%M    %d/%m/%Y}</span>",
+      "format": "<span color='#edf4fc'>  {:%H:%M     %d/%m/%Y}</span>",
     },
     "backlight": {
       "device": "intel_backlight",
@@ -34,7 +34,7 @@
       "scroll-step": 5,
     },
     "pulseaudio": {
-      "format": "<span color='#edf4fc'>{icon}</span> {volume}%",
+      "format": "<span color='#edf4fc'>{icon}</span>   {volume}%",
       "format-muted": "",
       "tooltip": false,
       "format-icons": {
@@ -53,13 +53,13 @@
     "network": {
       "interface": "wlan0",
       "format": "{ifname}",
-      "format-wifi": "<span color='#edf4fc'>  </span>{essid}",
+      "format-wifi": "<span color='#edf4fc'>  </span>   {essid}",
       "format-ethernet": "{ipaddr}/{cidr} ",
       "format-disconnected": "<span color='#edf4fc'>󰖪 </span>No Network",
       "tooltip": false,
     },
     "battery": {
-      "format": "<span color='#edf4fc'>{icon}</span> {capacity}%",
+      "format": "<span color='#edf4fc'>{icon}</span>  {capacity}%",
       "format-icons": ["", "", "", "", ""],
       "format-charging": "<span color='#edf4fc'></span> {capacity}%",
       "tooltip": false,

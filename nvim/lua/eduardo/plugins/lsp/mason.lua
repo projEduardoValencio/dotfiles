@@ -37,6 +37,7 @@ return {
 				--"graphql",
 				--"emmet_ls",
 				--"prismals",
+				"clangd",
 				"pyright",
 				"vuels",
 				"jdtls",
