@@ -229,9 +229,10 @@ bindsym $mod+i exec $terminal -e ranger
 
 # exec --no-startup-id ~/.fehbg
 # RANDOMIZE WALLPAPER
-exec feh --randomize --bg-fill ~/dotfiles/wallpapers/*
+# exec feh --randomize --bg-fill ~/dotfiles/wallpapers/*
+exec feh --randomize --bg-fill ~/dotfiles/wallpapers/digital_art_02.jpg
 
 exec --no-startup-id setxkbmap -layout us -variant intl
 exec --no-startup-id "~/dotfiles/Scripts/startup.sh"
-exec --no-startup-id "picom"
+#exec --no-startup-id "picom"
 #exec --no-startup-id "~/dotfiles/Scripts/live-wallpaper.sh"
