@@ -1,14 +1,17 @@
 live_config_reload = true
 
 [colors.normal]
-blue = "#71CBF8"
-green = "#FFA759"
+#blue = "#71CBF8"
+blue = "#3884ff"
+#green = "#FFA759"
+green = "#24ad79"
+cyan = "#57CCDE"
 magenta = "#C7B3F0"
-white = "#CBCCC6"
+white = "#EEEEEE"
 yellow = "#FBC965"
 
 [colors.primary]
-background = "#11131A"
+background = "#070707"
 foreground = "#CBCCC6"
 
 [colors.vi_mode_cursor]

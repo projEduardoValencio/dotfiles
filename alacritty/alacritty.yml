@@ -75,8 +75,9 @@ font:
 colors:
   # GITHUB
   primary:
-    background: '0x0a0c10'
+    background: '0x222222'
     foreground: '0xf0f3f6'
+    # background: '0x0a0c1f'
 
   # Cursor colors
   #
