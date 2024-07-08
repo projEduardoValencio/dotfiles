@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if ps -e | grep -q 'openvpn'; then
+  echo "VPN ON"
+  echo 
+  echo "#00AA00"
+fi
