@@ -100,10 +100,14 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+# bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
+
+# Open explorer
+set $explorer "dolphin"
+bindsym $mod+e exec $explorer
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -125,7 +129,7 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
+set $ws10 "0"
 
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
@@ -207,8 +211,8 @@ bindsym --release $mod+Shift+a exec "flameshot full"
 ############# GAPS ################
 ###################################
 for_window [class="^.*"] border pixel 2
-#client.focused #ffffff #ffffff #444444 #888888
-client.focused #2989ff #2989ff #444444 #888888
+client.focused #ffffff #ffffff #444444 #888888
+#client.focused #2989ff #2989ff #444444 #888888
 
 gaps inner 10
 gaps outer 1
@@ -230,9 +234,10 @@ bindsym $mod+i exec $terminal -e ranger
 # exec --no-startup-id ~/.fehbg
 # RANDOMIZE WALLPAPER
 # exec feh --randomize --bg-fill ~/dotfiles/wallpapers/*
-exec feh --randomize --bg-fill ~/dotfiles/wallpapers/digital_art_02.jpg
+exec feh --bg-fill ~/dotfiles/wallpapers/fish.jpg
 
 exec --no-startup-id setxkbmap -layout us -variant intl
 exec --no-startup-id "~/dotfiles/Scripts/startup.sh"
+exec --no-startup-id "~/dotfiles/Scripts/setTouchPadTapClick"
 #exec --no-startup-id "picom"
 #exec --no-startup-id "~/dotfiles/Scripts/live-wallpaper.sh"
