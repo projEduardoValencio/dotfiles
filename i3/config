@@ -236,7 +236,9 @@ bindsym $mod+i exec $terminal -e ranger
 # exec feh --randomize --bg-fill ~/dotfiles/wallpapers/*
 exec feh --bg-fill ~/dotfiles/wallpapers/fish.jpg
 
-exec --no-startup-id setxkbmap -layout us -variant intl
+# Set keyboard layout
+exec "setxkbmap -layout us -variant intl"
+
 exec --no-startup-id "~/dotfiles/Scripts/startup.sh"
 exec --no-startup-id "~/dotfiles/Scripts/setTouchPadTapClick"
 #exec --no-startup-id "picom"
