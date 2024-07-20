@@ -41,3 +41,6 @@ keymap.set("n", "<leader>bn", "<cmd>bnext<CR>", { desc = "Go to next buffer" }) 
 keymap.set("n", "<leader>bp", "<cmd>bprevious<CR>", { desc = "Go to previous buffer" }) --  go to previous buffer
 keymap.set("n", "<leader>.", "<cmd>bnext<CR>", { desc = "Go to next buffer" }) --  go to next buffer
 keymap.set("n", "<leader>,", "<cmd>bprevious<CR>", { desc = "Go to previous buffer" }) --  go to previous buffer
+
+-- Adjust window resize keybinds
+require("eduardo.config.window_resize").setup()
