@@ -31,6 +31,7 @@ return {
 				"tsserver",
 				"html",
 				"cssls",
+				"csharp_ls",
 				--"tailwindcss",
 				--"svelte",
 				"lua_ls",
@@ -54,6 +55,7 @@ return {
 				-- "black", -- python formatter
 				-- "pylint", -- python linter
 				"eslint_d", -- js linter
+				"csharpier",
 			},
 		})
 	end,
