@@ -14,24 +14,49 @@ return {
 		local keymap = vim.keymap -- for conciseness
 
 		local opts = { noremap = true, silent = true }
+
+		-- Definir um grupo de destaque personalizado
+		-- vim.cmd([[
+		--     highlight CustomHover guibg=#282C34
+		--   ]])
+		local custom_hover = function()
+			local params = vim.lsp.util.make_position_params()
+			vim.lsp.buf_request(0, "textDocument/hover", params, function(err, result, ctx, config)
+				if err ~= nil or result == nil then
+					return
+				end
+				local markdown_lines = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
+				markdown_lines = vim.lsp.util.trim_empty_lines(markdown_lines)
+				if vim.tbl_isempty(markdown_lines) then
+					return
+				end
+				local bufnr, winnr =
+					vim.lsp.util.open_floating_preview(markdown_lines, "markdown", { border = "rounded" })
+				vim.api.nvim_win_set_option(winnr, "winhighlight", "Normal:CustomHover")
+			end)
+		end
+
+		-- Mapear a função de hover personalizada
+		vim.api.nvim_set_keymap("n", "K", "<cmd>lua custom_hover()<CR>", { noremap = true, silent = true })
+
 		local on_attach = function(client, bufnr)
 			opts.buffer = bufnr
 
 			-- set keybinds
 			opts.desc = "Show LSP references"
-			keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+			keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
 
 			opts.desc = "Go to declaration"
 			keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
 
 			opts.desc = "Show LSP definitions"
-			keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
+			keymap.set("n", "gd", vim.lsp.buf.definition, opts) -- show lsp definitions
 
 			opts.desc = "Show LSP implementations"
-			keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
+			keymap.set("n", "gi", vim.lsp.buf.implementation, opts) -- show lsp implementations
 
 			opts.desc = "Show LSP type definitions"
-			keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
+			keymap.set("n", "gt", vim.lsp.buf.type_definition, opts) -- show lsp type definitions
 
 			opts.desc = "See available code actions"
 			keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
@@ -52,7 +77,7 @@ return {
 			keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
 
 			opts.desc = "Show documentation for what is under cursor"
-			keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+			keymap.set("n", "K", custom_hover, opts) -- show documentation for what is under cursor
 
 			opts.desc = "Restart LSP"
 			keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
