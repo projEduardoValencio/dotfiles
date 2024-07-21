@@ -54,6 +54,7 @@ return {
 				-- "isort", -- python formatter
 				-- "black", -- python formatter
 				-- "pylint", -- python linter
+				"editorconfig-checker",
 				"eslint_d", -- js linter
 				"csharpier",
 			},
