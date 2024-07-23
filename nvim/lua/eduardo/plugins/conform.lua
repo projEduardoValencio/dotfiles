@@ -6,7 +6,7 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				-- java = { "google-java-format" },
-				vue = { "prettier" },
+				-- vue = { "prettier" },
 				javascript = { "prettier" },
 			},
 			format_on_save = {

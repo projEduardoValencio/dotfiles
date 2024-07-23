@@ -42,6 +42,10 @@ return {
 		local on_attach = function(client, bufnr)
 			opts.buffer = bufnr
 
+			if client.name == "vuels" then
+				client.server_capabilities.documentFormattingProvider = false
+			end
+
 			-- set keybinds
 			opts.desc = "Show LSP references"
 			keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
@@ -121,6 +125,55 @@ return {
 		lspconfig["vuels"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
+			root_dir = require("lspconfig/util").root_pattern("package.json", "vue.config.js"),
+			settings = {
+				vetur = {
+					completion = {
+						autoImport = true,
+						useScaffoldSnippets = true,
+						tagCasing = "kebab", -- Garantir que os nomes dos componentes sejam sugeridos em kebab-case
+						attrCasing = "kebab", -- Garantir que os atributos dos componentes sejam sugeridos em kebab-case
+					},
+					grammar = {
+						customBlocks = {
+							docs = "markdown",
+							i18n = "json",
+						},
+					},
+					validation = {
+						template = true,
+						script = true,
+						style = true,
+						templateProps = true,
+						interpolation = true,
+					},
+					format = {
+						enable = true,
+						options = {
+							tabSize = 2,
+							useTabs = false,
+						},
+					},
+					languageFeatures = {
+						codeActions = true,
+						codeLens = true,
+						completion = {
+							defaultAttrNameCase = "kebab",
+							defaultTagNameCase = "kebab",
+						},
+						definition = true,
+						diagnostic = true,
+						documentHighlight = true,
+						documentLink = true,
+						documentSymbol = true,
+						hover = true,
+						references = true,
+						rename = true,
+						signatureHelp = true,
+						semanticTokens = true,
+					},
+				},
+			},
 		})
 
 		lspconfig["jdtls"].setup({
