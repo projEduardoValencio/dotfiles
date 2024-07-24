@@ -53,6 +53,9 @@ return {
 			opts.desc = "Go to declaration"
 			keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
 
+			opts.desc = "Code Action"
+			keymap.set("n", "ga", vim.lsp.buf.code_action, opts) -- go to declaration
+
 			opts.desc = "Show LSP definitions"
 			keymap.set("n", "gd", vim.lsp.buf.definition, opts) -- show lsp definitions
 
@@ -184,6 +187,11 @@ return {
 		lspconfig["csharp_ls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
+			settings = {
+				csharp = {
+					organizeImports = true,
+				},
+			},
 		})
 
 		lspconfig["clangd"].setup({
