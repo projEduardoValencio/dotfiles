@@ -287,5 +287,6 @@ return {
 		vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
 
 		vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<CR>", { desc = "Neotree Toggle" })
+		vim.keymap.set("n", "<leader>fe", "<cmd>Neotree reveal<CR>", { desc = "Reveal on Neotree" })
 	end,
 }
