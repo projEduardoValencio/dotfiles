@@ -1,95 +1,295 @@
 {
-  // "eslint.autoFixOnSave": true,
+  "workbench.settings.editor": "json",
+  // ----------------------------------------------------------------------------------------------------
+  // FONTS & THEMES
+  // ----------------------------------------------------------------------------------------------------
+  "workbench.colorTheme": "GitHub Dark Default",
   "workbench.iconTheme": "material-icon-theme",
-  "editor.fontFamily": "FiraCode Nerd Font",
+  "editor.fontFamily": "Hack Nerd Font",
+  "scm.inputFontFamily": "Hack Nerd Font",
+  "terminal.integrated.fontFamily": "Hack Nerd Font",
+  // ----------------------------------------------------------------------------------------------------
+  // Spell Check
+  // ----------------------------------------------------------------------------------------------------
+  "cSpell.language": "pt-BR,pt,en",
+  // ----------------------------------------------------------------------------------------------------
+  // Git decoration
+  // ----------------------------------------------------------------------------------------------------
+  "git.decorations.enabled": true,
   "editor.fontLigatures": true,
   "explorer.compactFolders": false,
-  "cSpell.language": "en,pt-BR,pt",
-  "editor.lineNumbers": "on",
-
-  "cSpell.userWords": ["uuid"],
-  "[jsonc]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // ----------------------------------------------------------------------------------------------------
+  // UI
+  // ----------------------------------------------------------------------------------------------------
+  "editor.minimap.enabled": false,
+  "editor.scrollbar.horizontal": "auto",
+  "editor.scrollbar.vertical": "auto",
+  "window.titleBarStyle": "custom",
+  "workbench.colorCustomizations": {
+    "sideBar.background": "#000000dc", // transparent
+    "editor.background": "#0000007e",
   },
-  "workbench.colorTheme": "GitHub Dark Default",
-  "editor.cursorSurroundingLines": 10,
-
-  // Vim configs
+  "explorer.confirmDelete": false,
+  // ----------------------------------------------------------------------------------------------------
+  // APC
+  // ----------------------------------------------------------------------------------------------------
+  "animations.Install-Method": "Apc Customize UI++",
+  "apc.electron": {
+    "opacity": 0.5,
+    "transparent": true,
+    "backgroundColor": "#00000000",
+    "vibrancy": "ultra-dark"
+  },
+  "apc.activityBar": {
+    "position": "top",
+    "hideSettings": true,
+    "size": 30
+  },
+  "apc.font.family": "Hack Nerd Font",
+  "apc.monospace.font.family": "Roboto Mono",
+  "apc.statusBar": {
+    "position": "editor-bottom",
+  },
+  // "apc.stylesheet": {
+  //   ".monaco-workbench .part.editor>.content .editor-group-container>.title div.tabs-container": "border-radius: 5px; font-family: 'Hack Nerd Font', Times, serif;",
+  //   "body": {
+  //     //"background-image": "url(/home/bug/dotfiles/wallpapers/japanese-wave-wallpapers-black.jpg), linear-gradient(to top,rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2))",
+  //     "background-size": "cover",
+  //     "background-blend-mode": "multiply",
+  //     "background-repeat": "no-repeat",
+  //   },
+  // },
+  // ----------------------------------------------------------------------------------------------------
+  // VIM CONFIGS
+  // ----------------------------------------------------------------------------------------------------
   "editor.smoothScrolling": true,
-  "vim.hlsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
   "vim.leader": "<space>",
-  "vim.easymotion": true,
-
-  "vim.insertModeKeyBindingsNonRecursive": [
+  "extensions.experimental.affinity": {
+    "vscodevim.vim": 1
+  },
+  "vim.normalModeKeyBindings": [
     {
-      "before": ["j", "k"],
-      "after": ["<Esc>"]
+      "before": [
+        "<space>",
+        "m"
+      ],
+      "commands": [
+        "bookmarks.toggle"
+      ]
+    },
+    {
+      "before": [
+        "<space>",
+        "b"
+      ],
+      "commands": [
+        "bookmarks.list"
+      ]
     }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": ["<leader>", ";"],
-      "after": ["A", ";", "<Esc>"]
+      "before": [
+        "<space>",
+        "w"
+      ],
+      "commands": [
+        "workbench.action.splitEditor"
+      ]
     },
     {
-      "before": ["<leader>", ","],
-      "after": ["A", ",", "<Esc>"]
+      "before": [
+        "<space>",
+        "e"
+      ],
+      "commands": [
+        "workbench.action.toggleSidebarVisibility"
+      ]
+    },
+    // {
+    //   "before": ["<space>", "b"],
+    //   "commands": [
+    //     "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
+    //   ]
+    // },
+    {
+      "before": [
+        "<space>",
+        "r"
+      ],
+      "commands": [
+        "revealInExplorer"
+      ]
     },
     {
-      "before": ["<leader>", "<space>"],
-      "commands": [":nohl"]
+      "before": [
+        "<space>",
+        "f",
+        "f"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ]
     },
     {
-      "before": ["<leader>", "w"],
-      "commands": ["workbench.action.splitEditor"]
+      "before": [
+        "<space>",
+        "g"
+      ],
+      "commands": [
+        "workbench.view.search"
+      ]
     },
     {
-      "before": ["<leader>", "e"],
-      "commands": ["workbench.action.toggleSidebarVisibility"]
+      "before": [
+        "<space>",
+        "r",
+        "f"
+      ],
+      "commands": [
+        "fileutils.renameFile"
+      ]
     },
     {
-      "before": ["<leader>", "c"],
-      "commands": ["editor.action.commentLine"]
+      "before": [
+        "<space>",
+        ","
+      ],
+      "after": [
+        "g",
+        "T"
+      ]
     },
     {
-      "before": ["<leader>", "f"],
-      "commands": ["revealInExplorer"]
+      "before": [
+        "<space>",
+        "."
+      ],
+      "after": [
+        "g",
+        "t"
+      ]
     },
     {
-      "before": ["<leader>", "r", "e"],
-      "commands": ["editor.action.rename"]
+      "before": [
+        "<space>",
+        "k"
+      ],
+      // "commands": "editor.action.revealDefinitionAside"
+      "commands": [
+        // "workbench.action.terminal.toggleTerminal"
+        // "workbench.action.findInFiles"
+      ]
     },
     {
-      "before": ["<leader>", "r", "f"],
-      "commands": ["fileutils.renameFile"]
+      "before": [
+        "<space>",
+        "o"
+      ],
+      "commands": [
+        "workbench.action.findInFiles"
+      ]
+    },
+ ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        ">"
+      ],
+      "after": [
+        ">",
+        "g",
+        "v"
+      ]
     },
     {
-      "before": ["<leader>", "g"],
-      "commands": ["workbench.action.showAllSymbols"]
-    },
-    {
-      "before": ["<leader>", "b"],
-      "commands": ["workbench.action.showEditorsInActiveGroup"]
-    },
-    {
-      "before": ["<leader>", "f"],
-      "commands": ["workbench.action.quickOpen"]
+      "before": [
+        "<"
+      ],
+      "after": [
+        "<",
+        "g",
+        "v"
+      ]
     }
   ],
-
-  "vim.visualModeKeyBindings": [
+  "vim.insertModeKeyBindingsNonRecursive": [
     {
-      "before": ["<leader>", "c"],
-      "commands": ["editor.action.commentLine", "extension.vim_escape"]
-    },
-    {
-      "before": [">"],
-      "after": [">", "g", "v"]
-    },
-    {
-      "before": ["<"],
-      "after": ["<", "g", "v"]
+      "before": [
+        "j",
+        "k"
+      ],
+      "after": [
+        "<esc>"
+      ]
     }
-  ]
+  ],
+  // ----------------------------------------------------------------------------------------------------
+  // CODE RUNNER CONFIG
+  // ----------------------------------------------------------------------------------------------------
+  "code-runner.executorMap": {
+    "javascript": "node",
+    // "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
+    "java": "java",
+    "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "zig": "zig run",
+    "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "php": "php",
+    "python": "python -u",
+    "perl": "perl",
+    "perl6": "perl6",
+    "ruby": "ruby",
+    "go": "go run",
+    "lua": "lua",
+    "groovy": "groovy",
+    "powershell": "powershell -ExecutionPolicy ByPass -File",
+    "bat": "cmd /c",
+    "shellscript": "bash",
+    "fsharp": "fsi",
+    "csharp": "cd $dir && dotnet run",
+    "vbscript": "cscript //Nologo",
+    "typescript": "ts-node",
+    "coffeescript": "coffee",
+    "scala": "scala",
+    "swift": "swift",
+    "julia": "julia",
+    "crystal": "crystal",
+    "ocaml": "ocaml",
+    "r": "Rscript",
+    "applescript": "osascript",
+    "clojure": "lein exec",
+    "haxe": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
+    "rust": "cd $dir && rustc $fileName && $dir$fileNameWithoutExt",
+    "racket": "racket",
+    "scheme": "csi -script",
+    "ahk": "autohotkey",
+    "autoit": "autoit3",
+    "dart": "dart",
+    "pascal": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
+    "d": "cd $dir && dmd $fileName && $dir$fileNameWithoutExt",
+    "haskell": "runghc",
+    "nim": "nim compile --verbosity:0 --hints:off --run",
+    "lisp": "sbcl --script",
+    "kit": "kitc --run",
+    "v": "v run",
+    "sass": "sass --style expanded",
+    "scss": "scss --style expanded",
+    "less": "cd $dir && lessc $fileName $fileNameWithoutExt.css",
+    "FortranFreeForm": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "fortran-modern": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "fortran_fixed-form": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "fortran": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "sml": "cd $dir && sml $fileName"
+  },
+  "window.commandCenter": false,
+  "RainbowBrackets.depreciation-notice": false,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "redhat.telemetry.enabled": true,
+  "git.openRepositoryInParentFolders": "never",
+  "tabnine.experimentalAutoImports": true,
 }
