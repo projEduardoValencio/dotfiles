@@ -1,10 +1,7 @@
 {
+  // UPDATE: 2025/03/29 - Eduardo Valencio
+  // https://vscode.dev/editor/profile/github/55938e6f2f9c885460d71d7cb3de5778
   "workbench.settings.editor": "json",
-  // ----------------------------------------------------------------------------------------------------
-  // FONTS & THEMES
-  // ----------------------------------------------------------------------------------------------------
-  "workbench.colorTheme": "GitHub Dark Default",
-  "workbench.iconTheme": "material-icon-theme",
   "editor.fontFamily": "Hack Nerd Font",
   "scm.inputFontFamily": "Hack Nerd Font",
   "terminal.integrated.fontFamily": "Hack Nerd Font",
@@ -18,47 +15,11 @@
   "git.decorations.enabled": true,
   "editor.fontLigatures": true,
   "explorer.compactFolders": false,
-  // ----------------------------------------------------------------------------------------------------
-  // UI
-  // ----------------------------------------------------------------------------------------------------
-  "editor.minimap.enabled": false,
   "editor.scrollbar.horizontal": "auto",
   "editor.scrollbar.vertical": "auto",
   "window.titleBarStyle": "custom",
-  "workbench.colorCustomizations": {
-    "sideBar.background": "#000000dc", // transparent
-    "editor.background": "#0000007e",
-  },
+  "workbench.colorCustomizations": {},
   "explorer.confirmDelete": false,
-  // ----------------------------------------------------------------------------------------------------
-  // APC
-  // ----------------------------------------------------------------------------------------------------
-  "animations.Install-Method": "Apc Customize UI++",
-  "apc.electron": {
-    "opacity": 0.5,
-    "transparent": true,
-    "backgroundColor": "#00000000",
-    "vibrancy": "ultra-dark"
-  },
-  "apc.activityBar": {
-    "position": "top",
-    "hideSettings": true,
-    "size": 30
-  },
-  "apc.font.family": "Hack Nerd Font",
-  "apc.monospace.font.family": "Roboto Mono",
-  "apc.statusBar": {
-    "position": "editor-bottom",
-  },
-  // "apc.stylesheet": {
-  //   ".monaco-workbench .part.editor>.content .editor-group-container>.title div.tabs-container": "border-radius: 5px; font-family: 'Hack Nerd Font', Times, serif;",
-  //   "body": {
-  //     //"background-image": "url(/home/bug/dotfiles/wallpapers/japanese-wave-wallpapers-black.jpg), linear-gradient(to top,rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2))",
-  //     "background-size": "cover",
-  //     "background-blend-mode": "multiply",
-  //     "background-repeat": "no-repeat",
-  //   },
-  // },
   // ----------------------------------------------------------------------------------------------------
   // VIM CONFIGS
   // ----------------------------------------------------------------------------------------------------
@@ -73,21 +34,21 @@
     {
       "before": [
         "<space>",
-        "m"
+        "z"
       ],
       "commands": [
-        "bookmarks.toggle"
+        "workbench.action.toggleZenMode"
       ]
     },
     {
       "before": [
         "<space>",
-        "b"
+        "<space>"
       ],
       "commands": [
-        "bookmarks.list"
+        "workbench.action.maximizeEditorHideSidebar"
       ]
-    }
+    },
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
@@ -105,8 +66,35 @@
         "e"
       ],
       "commands": [
-        "workbench.action.toggleSidebarVisibility"
+        "workbench.files.action.showActiveFileInExplorer",
       ]
+    },
+    {
+      "before": [
+        "<space>",
+        "n"
+      ],
+      "commands": [
+        "workbench.action.toggleSidebarVisibility",
+      ]
+    },
+    {
+      "before": [
+        "<space>",
+        "t"
+      ],
+      "commands": [
+        "workbench.action.terminal.toggleTerminal"
+      ]
+    },
+    {
+      "before": [
+        "<C-k>"
+      ],
+      "commands": [
+        "workbench.action.focusActiveEditorGroup"
+      ],
+      "when": "terminalFocus"
     },
     // {
     //   "before": ["<space>", "b"],
@@ -131,6 +119,27 @@
       ],
       "commands": [
         "workbench.action.quickOpen"
+      ]
+    },
+    {
+      "before": [
+        "<space>",
+        "f",
+        "s"
+      ],
+      "commands": [
+        // "fzf-quick-open.runFzfSearchProjectRoot",
+        "workbench.action.findInFiles"
+      ]
+    },
+    {
+      "before": [
+        "<space>",
+        "f",
+        "e"
+      ],
+      "commands": [
+        "workbench.files.action.showActiveFileInExplorer"
       ]
     },
     {
@@ -174,13 +183,10 @@
     },
     {
       "before": [
-        "<space>",
-        "k"
+        "<S-k>"
       ],
-      // "commands": "editor.action.revealDefinitionAside"
       "commands": [
-        // "workbench.action.terminal.toggleTerminal"
-        // "workbench.action.findInFiles"
+        "editor.action.showHover"
       ]
     },
     {
@@ -192,28 +198,32 @@
         "workbench.action.findInFiles"
       ]
     },
- ],
-  "vim.visualModeKeyBindingsNonRecursive": [
     {
       "before": [
-        ">"
+        "<C-.>"
       ],
-      "after": [
-        ">",
-        "g",
-        "v"
+      "commands": [
+        "editor.action.triggerSuggest"
       ]
     },
     {
       "before": [
-        "<"
-      ],
-      "after": [
-        "<",
         "g",
-        "v"
+        "i"
+      ],
+      "commands": [
+        "editor.action.goToImplementation"
       ]
-    }
+    },
+    {
+      "before": [
+        "g",
+        "r"
+      ],
+      "commands": [
+        "editor.action.referenceSearch.trigger"
+      ]
+    },
   ],
   "vim.insertModeKeyBindingsNonRecursive": [
     {
@@ -284,7 +294,6 @@
     "fortran": "cd $dir && gfortran $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
     "sml": "cd $dir && sml $fileName"
   },
-  "window.commandCenter": false,
   "RainbowBrackets.depreciation-notice": false,
   "editor.quickSuggestions": {
     "strings": true
@@ -292,4 +301,24 @@
   "redhat.telemetry.enabled": true,
   "git.openRepositoryInParentFolders": "never",
   "tabnine.experimentalAutoImports": true,
+  "FSharp.suggestGitignore": false,
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "Vue.volar"
+  },
+  "editor.find.autoFindInSelection": "always",
+  "search.defaultViewMode": "tree",
+  "searchEverywhere.include": "**/*.{js,jsx,ts,tsx,cs,csproj,json}",
+  "workbench.colorTheme": "Vesper",
+  "geminicodeassist.project": "",
+  "python.defaultInterpreterPath": "c:\\Python312\\python.exe",
+  "database-client.autoSync": true,
+  "workbench.iconTheme": "symbols",
+  "workbench.sideBar.location": "right",
+  "workbench.activityBar.location": "top",
+  "editor.fontSize": 14,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorBlinking": "phase",
 }
