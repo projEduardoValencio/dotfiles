@@ -15,10 +15,6 @@ return {
 
 		local opts = { noremap = true, silent = true }
 
-		-- Definir um grupo de destaque personalizado
-		-- vim.cmd([[
-		--     highlight CustomHover guibg=#282C34
-		--   ]])
 		local custom_hover = function()
 			local params = vim.lsp.util.make_position_params()
 			vim.lsp.buf_request(0, "textDocument/hover", params, function(err, result, ctx, config)
@@ -36,7 +32,6 @@ return {
 			end)
 		end
 
-		-- Mapear a função de hover personalizada
 		vim.api.nvim_set_keymap("n", "K", "<cmd>lua custom_hover()<CR>", { noremap = true, silent = true })
 
 		local on_attach = function(client, bufnr)
@@ -100,104 +95,6 @@ return {
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
-
-		-- configure html server
-		lspconfig["html"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		-- configure typescript server with plugin
-		lspconfig["tsserver"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		-- configure css server
-		lspconfig["cssls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		-- configure python server
-		lspconfig["pyright"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		lspconfig["vuels"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			root_dir = require("lspconfig/util").root_pattern("package.json", "vue.config.js"),
-			settings = {
-				vetur = {
-					completion = {
-						autoImport = true,
-						useScaffoldSnippets = true,
-						tagCasing = "kebab", -- Garantir que os nomes dos componentes sejam sugeridos em kebab-case
-						attrCasing = "kebab", -- Garantir que os atributos dos componentes sejam sugeridos em kebab-case
-					},
-					grammar = {
-						customBlocks = {
-							docs = "markdown",
-							i18n = "json",
-						},
-					},
-					validation = {
-						template = true,
-						script = true,
-						style = true,
-						templateProps = true,
-						interpolation = true,
-					},
-					format = {
-						enable = true,
-						options = {
-							tabSize = 2,
-							useTabs = false,
-						},
-					},
-					languageFeatures = {
-						codeActions = true,
-						codeLens = true,
-						completion = {
-							defaultAttrNameCase = "kebab",
-							defaultTagNameCase = "kebab",
-						},
-						definition = true,
-						diagnostic = true,
-						documentHighlight = true,
-						documentLink = true,
-						documentSymbol = true,
-						hover = true,
-						references = true,
-						rename = true,
-						signatureHelp = true,
-						semanticTokens = true,
-					},
-				},
-			},
-		})
-
-		lspconfig["jdtls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
-
-		lspconfig["csharp_ls"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-			settings = {
-				csharp = {
-					organizeImports = true,
-				},
-			},
-		})
-
-		lspconfig["clangd"].setup({
-			capabilities = capabilities,
-			on_attach = on_attach,
-		})
 
 		-- configure lua server (with special settings)
 		lspconfig["lua_ls"].setup({
