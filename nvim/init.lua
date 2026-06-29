@@ -1,2 +1,1 @@
-require("eduardo.config")
-require("eduardo.lazy")
+require("config.lazy")
